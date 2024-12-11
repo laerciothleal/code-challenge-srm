@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ItemComercializadoService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.backend.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ItemComercializadoService (com.backend.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ItemComercializadoService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.backend.service;
+&nbsp;
+&nbsp;import com.backend.exception.ItemComercializadoNotFoundException;
+&nbsp;import com.backend.model.ItemComercializado;
+&nbsp;import com.backend.repository.ItemComercializadoRepository;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;@RequiredArgsConstructor</b>
+&nbsp;public class ItemComercializadoService {
+&nbsp;
+&nbsp;    private final ItemComercializadoRepository repository;
+&nbsp;
+&nbsp;    public ItemComercializado save(ItemComercializado itemComercializado) {
+<b class="fc">&nbsp;        return repository.save(itemComercializado);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ItemComercializado update(Long id, ItemComercializado itemComercializado) {
+<b class="fc">&nbsp;        ItemComercializado existingItem = findById(id);</b>
+<b class="fc">&nbsp;        existingItem.setNomeItem(itemComercializado.getNomeItem());</b>
+<b class="fc">&nbsp;        existingItem.setReinoOrigem(itemComercializado.getReinoOrigem());</b>
+<b class="fc">&nbsp;        existingItem.setPrecoBase(itemComercializado.getPrecoBase());</b>
+<b class="fc">&nbsp;        return repository.save(existingItem);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ItemComercializado findById(Long id) {
+<b class="fc">&nbsp;        return repository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new ItemComercializadoNotFoundException(id));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;ItemComercializado&gt; findAll() {
+<b class="fc">&nbsp;        return repository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deleteById(Long id) {
+<b class="fc">&nbsp;        repository.deleteById(id);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 08:11</div>
+</div>
+</body>
+</html>

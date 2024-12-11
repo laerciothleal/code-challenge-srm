@@ -1,0 +1,7 @@
+com/backend/service/TransacaoServiceTest.class
+com/backend/service/MoedaServiceTest.class
+com/backend/BackendApplicationTest.class
+com/backend/controller/TransacaoControllerTest.class
+com/backend/service/ItemComercializadoServiceTest.class
+com/backend/controller/ItemComercializadoControllerTest.class
+com/backend/controller/MoedaControllerTest.class

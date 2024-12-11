@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ItemComercializadoMapperImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.backend.mappper</a>
+</div>
+
+<h1>Coverage Summary for Class: ItemComercializadoMapperImpl (com.backend.mappper)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ItemComercializadoMapperImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4.3%
+  </span>
+  <span class="absValue">
+    (1/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.backend.mappper;
+&nbsp;
+&nbsp;import com.backend.controller.request.ItemComercializadoRequest;
+&nbsp;import com.backend.controller.response.ItemComercializadoResponse;
+&nbsp;import com.backend.model.ItemComercializado;
+&nbsp;import javax.annotation.processing.Generated;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;@Generated(
+&nbsp;    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+&nbsp;    date = &quot;2024-12-11T08:08:31-0300&quot;,
+&nbsp;    comments = &quot;version: 1.5.3.Final, compiler: javac, environment: Java 21.0.3 (Amazon.com Inc.)&quot;
+&nbsp;)
+&nbsp;@Component
+<b class="fc">&nbsp;public class ItemComercializadoMapperImpl implements ItemComercializadoMapper {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public ItemComercializado toEntity(ItemComercializadoRequest request) {
+<b class="nc">&nbsp;        if ( request == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        ItemComercializado.ItemComercializadoBuilder itemComercializado = ItemComercializado.builder();</b>
+&nbsp;
+<b class="nc">&nbsp;        if ( request.nomeItem() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializado.nomeItem( request.nomeItem() );</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if ( request.reinoOrigem() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializado.reinoOrigem( request.reinoOrigem() );</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if ( request.precoBase() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializado.precoBase( request.precoBase() );</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return itemComercializado.build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public ItemComercializadoResponse toResponse(ItemComercializado itemComercializado) {
+<b class="nc">&nbsp;        if ( itemComercializado == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        ItemComercializadoResponse.ItemComercializadoResponseBuilder itemComercializadoResponse = ItemComercializadoResponse.builder();</b>
+&nbsp;
+<b class="nc">&nbsp;        if ( itemComercializado.getId() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializadoResponse.id( itemComercializado.getId() );</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if ( itemComercializado.getNomeItem() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializadoResponse.nomeItem( itemComercializado.getNomeItem() );</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if ( itemComercializado.getReinoOrigem() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializadoResponse.reinoOrigem( itemComercializado.getReinoOrigem() );</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if ( itemComercializado.getPrecoBase() != null ) {</b>
+<b class="nc">&nbsp;            itemComercializadoResponse.precoBase( itemComercializado.getPrecoBase() );</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return itemComercializadoResponse.build();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 08:11</div>
+</div>
+</body>
+</html>

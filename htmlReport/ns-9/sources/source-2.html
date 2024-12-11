@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MoedaService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.backend.service</a>
+</div>
+
+<h1>Coverage Summary for Class: MoedaService (com.backend.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MoedaService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.backend.service;
+&nbsp;
+&nbsp;import com.backend.exception.MoedaNotFoundException;
+&nbsp;import com.backend.model.Moeda;
+&nbsp;import com.backend.repository.MoedaRepository;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.math.MathContext;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;@RequiredArgsConstructor</b>
+&nbsp;public class MoedaService {
+&nbsp;
+&nbsp;    private final MoedaRepository moedaRepository;
+&nbsp;
+&nbsp;    public BigDecimal convert(BigDecimal valor, String moedaOrigem, String moedaDestino) {
+&nbsp;
+<b class="fc">&nbsp;        Moeda de = moedaRepository.findByNomeMoedaIgnoreCase(moedaOrigem)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new MoedaNotFoundException(moedaOrigem));</b>
+&nbsp;
+<b class="fc">&nbsp;        Moeda para = moedaRepository.findByNomeMoedaIgnoreCase(moedaDestino)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new MoedaNotFoundException(moedaDestino));</b>
+&nbsp;
+<b class="fc">&nbsp;        return valor.multiply(para.getTaxaCambio().divide(de.getTaxaCambio(), MathContext.DECIMAL128));</b>
+&nbsp;    }
+&nbsp;    public Moeda save(Moeda moeda) {
+<b class="fc">&nbsp;        return moedaRepository.save(moeda);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Moeda update(Long id, Moeda moeda) {
+<b class="fc">&nbsp;        Moeda existingMoeda = findById(id);</b>
+<b class="fc">&nbsp;        existingMoeda.setNomeMoeda(moeda.getNomeMoeda());</b>
+<b class="fc">&nbsp;        existingMoeda.setTaxaCambio(moeda.getTaxaCambio());</b>
+<b class="fc">&nbsp;        return moedaRepository.save(existingMoeda);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Moeda findById(Long id) {
+<b class="fc">&nbsp;        return moedaRepository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new MoedaNotFoundException(id));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Moeda&gt; findAll() {
+<b class="fc">&nbsp;        return moedaRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deleteById(Long id) {
+<b class="fc">&nbsp;        moedaRepository.deleteById(id);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-11 08:11</div>
+</div>
+</body>
+</html>
