@@ -36,7 +36,7 @@ O sistema oferece:
 1. **Clonar o Repositório**
 
    ```bash
-   git clone [https://github.com/laerciothleal/code-challenge-srm.git](https://github.com/laerciothleal/code-challenge-srm.git)
+   git clone https://github.com/laerciothleal/code-challenge-srm.git
    cd code-challenge-srm
    ```
    
