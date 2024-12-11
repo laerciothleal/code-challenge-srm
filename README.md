@@ -39,25 +39,8 @@ O sistema oferece:
    git clone https://github.com/laerciothleal/code-challenge-srm.git
    cd code-challenge-srm
    ```
-
-2. **Acessar o Banco de Dados**
-
-   h2 console `http://localhost:8080/h2/login.jsp`
-
-   Credencias:
-      - JDBC URL:  jdbc:h2:mem:crud
-     - User Name: crud
-     - Password:  crud
-
-![H2](h2.png)
-
-3. **Script SQL**
-
-- Se encontra nesse caminho dentro do projeto: `src/main/resources/db/changelog/changes/001-initial_script.sql`
-  
-- **DER**:
-  ![DER](der.png)
-4. **Construir e Executar a Aplicação**
+   
+2. **Construir e Executar a Aplicação**
 
    Utilize o seguinte arquivo `docker-compose.yml`:
 
@@ -78,10 +61,31 @@ O sistema oferece:
      ```bash
      docker-compose up --build
      ```
+3. **Executar teste**
+`mvn clean test`
 
-5. **Acessar a Documentação da API**
+4. **Acessar a Documentação da API**
 
-    - Swagger: `http://localhost:8080/swagger-ui.html`
+   - Swagger: `http://localhost:8080/swagger-ui.html`
+
+5. **Acessar o Banco de Dados**
+
+   h2 console `http://localhost:8080/h2/login.jsp`
+
+   Credencias:
+      - JDBC URL:  jdbc:h2:mem:crud
+     - User Name: crud
+     - Password:  crud
+
+![H2](h2.png)
+
+6. **Script SQL**
+
+- Se encontra nesse caminho dentro do projeto: `src/main/resources/db/changelog/changes/001-initial_script.sql`
+  
+- **DER**:
+  ![DER](der.png)
+
 
 ## Contato
 
