@@ -30,6 +30,7 @@ O sistema oferece:
 ### Pré-requisitos
 
 - **Docker** instalado.
+- **Maven** instalado.
 
 ### Passos para Execução
 
