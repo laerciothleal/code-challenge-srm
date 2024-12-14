@@ -8,11 +8,11 @@ import java.math.BigDecimal;
 @Builder
 public record ItemComercializadoRequest(
         @NotBlank(message = "O nome do item não pode estar nulo/branco")
-        @Max(value = 50, message = "O nome do item não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "O nome do item não pode ter mais que 50 caracteres")
         String nomeItem,
 
         @NotBlank(message = "O reino de origem não pode estar nulo/branco")
-        @Max(value = 50, message = "O reino não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "O reino não pode ter mais que 50 caracteres")
         String reinoOrigem,
 
         @NotNull(message = "O preço base não pode estar nulo")

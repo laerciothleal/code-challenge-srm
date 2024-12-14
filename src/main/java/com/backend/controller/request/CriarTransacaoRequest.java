@@ -1,10 +1,6 @@
 package com.backend.controller.request;
 
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.Builder;
 
 import java.math.BigDecimal;
@@ -12,7 +8,7 @@ import java.math.BigDecimal;
 @Builder
 public record CriarTransacaoRequest(
         @NotBlank(message = "O nome do item não pode estar nulo/branco")
-        @Max(value = 50, message = "O nome do item não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "O nome do item não pode ter mais que 50 caracteres")
         String nomeItem,
 
         @NotNull(message = "O valor não pode ser nulo")
@@ -21,11 +17,11 @@ public record CriarTransacaoRequest(
         BigDecimal valor,
 
         @NotBlank(message = "A moeda de origem não pode estar nula/branca")
-        @Max(value = 50, message = "A moeda de origem não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "A moeda de origem não pode ter mais que 50 caracteres")
         String moedaOrigem,
 
         @NotBlank(message = "A moeda de destino não pode estar nula/branca")
-        @Max(value = 50, message = "A moeda de destino não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "A moeda de destino não pode ter mais que 50 caracteres")
         String moedaDestino
 ) {
 }

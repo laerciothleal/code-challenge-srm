@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Builder
 public record MoedaRequest(
         @NotBlank(message = "O nome da moeda não pode estar nulo/branco")
-        @Max(value = 50, message = "O nome da moeda não pode ter mais que 50 caracteres")
+        @Size(max = 50, message = "O nome da moeda não pode ter mais que 50 caracteres")
         String nomeMoeda,
 
         @NotNull(message = "A taxa de câmbio não pode estar nula")
