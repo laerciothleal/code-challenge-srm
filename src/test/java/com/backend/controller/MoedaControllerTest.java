@@ -1,7 +1,9 @@
 package com.backend.controller;
 
 import com.backend.controller.request.MoedaRequest;
+import com.backend.controller.response.ConversaoResponse;
 import com.backend.controller.response.MoedaResponse;
+import com.backend.mappper.ConversaoMapper;
 import com.backend.mappper.MoedaMapper;
 import com.backend.model.Moeda;
 import com.backend.service.MoedaService;
@@ -29,6 +31,9 @@ class MoedaControllerTest {
     @Mock
     private MoedaMapper moedaMapper;
 
+    @Mock
+    private ConversaoMapper conversaoMapper;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -36,18 +41,24 @@ class MoedaControllerTest {
 
     @Test
     void shouldConvertCurrency() {
+        // Arrange
         BigDecimal valor = BigDecimal.valueOf(100);
         String moedaOrigem = "ouro real";
         String moedaDestino = "tibar";
         BigDecimal valorConvertido = BigDecimal.valueOf(250);
+        ConversaoResponse expectedResponse = new ConversaoResponse(valorConvertido);
 
         when(moedaService.convert(valor, moedaOrigem, moedaDestino)).thenReturn(valorConvertido);
+        when(conversaoMapper.toConversaoResponse(valorConvertido)).thenReturn(expectedResponse);
 
-        ResponseEntity<BigDecimal> response = moedaController.convert(valor, moedaOrigem, moedaDestino);
+        // Act
+        ResponseEntity<ConversaoResponse> response = moedaController.convert(valor, moedaOrigem, moedaDestino);
 
-        assertThat(response.getBody()).isEqualTo(valorConvertido);
+        // Assert
+        assertThat(response.getBody()).isEqualTo(expectedResponse);
         assertThat(response.getStatusCodeValue()).isEqualTo(200);
         verify(moedaService, times(1)).convert(valor, moedaOrigem, moedaDestino);
+        verify(conversaoMapper, times(1)).toConversaoResponse(valorConvertido);
     }
 
     @Test

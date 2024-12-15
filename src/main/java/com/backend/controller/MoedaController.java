@@ -1,7 +1,9 @@
 package com.backend.controller;
 
 import com.backend.controller.request.MoedaRequest;
+import com.backend.controller.response.ConversaoResponse;
 import com.backend.controller.response.MoedaResponse;
+import com.backend.mappper.ConversaoMapper;
 import com.backend.mappper.MoedaMapper;
 import com.backend.model.Moeda;
 import com.backend.service.MoedaService;
@@ -24,20 +26,26 @@ public class MoedaController {
 
     private final MoedaService moedaService;
     private final MoedaMapper moedaMapper;
+    private final ConversaoMapper conversaoMapper;
 
 
     @Operation(summary = "Conversão de moeda", description = "Realiza conversão de moeda com as informações fornecidas.")
     @GetMapping("/converter")
-    public ResponseEntity<BigDecimal> convert(
+    public ResponseEntity<ConversaoResponse> convert(
             @Parameter(description = "Valor", example = "10.0")
             @RequestParam BigDecimal valor,
             @Parameter(description = "moedaOrigem", example = "tibar")
             @RequestParam String moedaOrigem,
             @Parameter(description = "moedaDestino", example = "ouro real")
             @RequestParam String moedaDestino) {
-        BigDecimal result = moedaService.convert(valor, moedaOrigem, moedaDestino);
-        return ResponseEntity.ok(result);
+
+        BigDecimal valorConvertido = moedaService.convert(valor, moedaOrigem, moedaDestino);
+
+        ConversaoResponse response = conversaoMapper.toConversaoResponse(valorConvertido);
+
+        return ResponseEntity.ok(response);
     }
+
 
     @Operation(summary = "Criar uma moeda")
     @PostMapping

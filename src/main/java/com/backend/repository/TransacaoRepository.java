@@ -14,11 +14,13 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
     @Query(
             """
             SELECT t FROM Transacao t WHERE  
-            (( :nomeItem IS NULL OR LOWER(t.nomeItem) LIKE LOWER(CONCAT('%', :nomeItem, '%'))) 
-            AND 
-            (:moedaOrigem IS NULL OR LOWER(t.moedaOrigem) LIKE LOWER(CONCAT('%', :moedaOrigem, '%')))
-            AND 
-            (:moedaDestino IS NULL OR LOWER(t.moedaDestino) LIKE LOWER(CONCAT('%', :moedaDestino, '%'))))     
+            (
+                ( :nomeItem IS NULL OR LOWER(t.nomeItem) LIKE LOWER(CONCAT('%', :nomeItem, '%'))) 
+                AND 
+                (:moedaOrigem IS NULL OR LOWER(t.moedaOrigem) LIKE LOWER(CONCAT('%', :moedaOrigem, '%')))
+                AND 
+                (:moedaDestino IS NULL OR LOWER(t.moedaDestino) LIKE LOWER(CONCAT('%', :moedaDestino, '%')))
+            )     
             """
     )
     List<Transacao> findingCustomized(
