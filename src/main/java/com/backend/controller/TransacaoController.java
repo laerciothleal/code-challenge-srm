@@ -30,7 +30,7 @@ public class TransacaoController {
     public ResponseEntity<TransacaoResponse> createTransaction(@Valid @RequestBody CriarTransacaoRequest request) {
         Transacao transacao = transacaoService.processTransaction(
                 request.nomeItem(),
-                request.valor(),
+                request.quantidade(),
                 request.moedaOrigem(),
                 request.moedaDestino()
         );

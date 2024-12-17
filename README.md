@@ -119,7 +119,7 @@ O sistema oferece:
        nome_item varchar(50) not null,
        moeda_origem varchar(50) not null,
        moeda_destino varchar(50) not null,
-       valor decimal(10, 2) not null,
+       quantidade decimal(10) not null,
        valor_convertido decimal(10, 2) not null,
        constraint fk_nome_item foreign key (nome_item) references tb_item_comercializado(nome_item),
        constraint fk_moeda_origem foreign key (moeda_origem) references tb_moeda(nome_moeda),

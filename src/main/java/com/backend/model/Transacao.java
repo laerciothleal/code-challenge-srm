@@ -32,8 +32,14 @@ public class Transacao {
     @Column(name = "moeda_destino", nullable = false)
     private String moedaDestino;
 
-    @Column(name = "valor", nullable = false)
-    private BigDecimal valor;
+    @Column(name = "preco_base", nullable = false)
+    private BigDecimal precoBase;
+
+    @Column(name = "quantidade", nullable = false)
+    private BigDecimal quantidade;
+
+    @Column(name = "quantidade_total", nullable = false)
+    private BigDecimal quantidadeTotal;
 
     @Column(name = "valor_convertido", nullable = false)
     private BigDecimal valorConvertido;

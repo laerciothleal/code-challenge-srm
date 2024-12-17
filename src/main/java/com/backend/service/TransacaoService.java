@@ -25,17 +25,17 @@ public class TransacaoService {
 
 
     @Transactional
-    public Transacao processTransaction(String nomeItem, BigDecimal valor, String moedaOrigem, String moedaDestino) {
+    public Transacao processTransaction(String nomeItem, BigDecimal quantidade, String moedaOrigem, String moedaDestino) {
 
         // Buscar o item pelo nome informado
         ItemComercializado item = itemComercializadoRepository.findByNomeItemIgnoreCase(nomeItem.trim())
                 .orElseThrow(() -> new ItemComercializadoNotFoundException(nomeItem));
 
         // Multiplicar o preço base pelo valor fornecido
-        BigDecimal valorTotalBase = item.getPrecoBase().multiply(valor);
+        BigDecimal quantidadeTotal = item.getPrecoBase().multiply(quantidade);
 
         // Realizar a conversão com base no valor total
-        BigDecimal valorConvertido = moedaService.convert(valorTotalBase, moedaOrigem, moedaDestino);
+        BigDecimal valorConvertido = moedaService.convert(quantidadeTotal, moedaOrigem, moedaDestino);
 
         // Construir o objeto de transação
         Transacao transacao = Transacao.builder()
@@ -43,7 +43,9 @@ public class TransacaoService {
                 .nomeItem(nomeItem.toLowerCase())
                 .moedaOrigem(moedaOrigem.toLowerCase())
                 .moedaDestino(moedaDestino.toLowerCase())
-                .valor(valorTotalBase) // Valor total com base no precoBase
+                .quantidadeTotal(quantidadeTotal) // Valor total com base no precoBase
+                .precoBase(item.getPrecoBase())// Valor precoBase do item
+                .quantidade(quantidade)  // quantidade de ItemComercializado
                 .valorConvertido(valorConvertido) // Valor convertido final
                 .build();
 

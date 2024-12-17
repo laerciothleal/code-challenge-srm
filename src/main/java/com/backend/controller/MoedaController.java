@@ -32,14 +32,14 @@ public class MoedaController {
     @Operation(summary = "Conversão de moeda", description = "Realiza conversão de moeda com as informações fornecidas.")
     @GetMapping("/converter")
     public ResponseEntity<ConversaoResponse> convert(
-            @Parameter(description = "Valor", example = "10.0")
-            @RequestParam BigDecimal valor,
+            @Parameter(description = "quantidade", example = "10")
+            @RequestParam BigDecimal quantidade,
             @Parameter(description = "moedaOrigem", example = "tibar")
             @RequestParam String moedaOrigem,
             @Parameter(description = "moedaDestino", example = "ouro real")
             @RequestParam String moedaDestino) {
 
-        BigDecimal valorConvertido = moedaService.convert(valor, moedaOrigem, moedaDestino);
+        BigDecimal valorConvertido = moedaService.convert(quantidade, moedaOrigem, moedaDestino);
 
         ConversaoResponse response = conversaoMapper.toConversaoResponse(valorConvertido);
 

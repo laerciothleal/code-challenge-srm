@@ -31,9 +31,12 @@ create table tb_transacao (
     nome_item varchar(50) not null,
     moeda_origem varchar(50) not null,
     moeda_destino varchar(50) not null,
-    valor decimal(10, 2) not null,
+    quantidade decimal(10) not null,
+    preco_base decimal(10, 2) not null,
+    quantidade_total decimal(10, 2) not null,
     valor_convertido decimal(10, 2) not null,
     constraint fk_nome_item foreign key (nome_item) references tb_item_comercializado(nome_item),
     constraint fk_moeda_origem foreign key (moeda_origem) references tb_moeda(nome_moeda),
     constraint fk_moeda_destino foreign key (moeda_destino) references tb_moeda(nome_moeda)
+
 );

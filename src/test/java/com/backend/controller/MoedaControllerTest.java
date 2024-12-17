@@ -42,22 +42,22 @@ class MoedaControllerTest {
     @Test
     void shouldConvertCurrency() {
         // Arrange
-        BigDecimal valor = BigDecimal.valueOf(100);
+        BigDecimal quantidade = BigDecimal.valueOf(100);
         String moedaOrigem = "ouro real";
         String moedaDestino = "tibar";
         BigDecimal valorConvertido = BigDecimal.valueOf(250);
         ConversaoResponse expectedResponse = new ConversaoResponse(valorConvertido);
 
-        when(moedaService.convert(valor, moedaOrigem, moedaDestino)).thenReturn(valorConvertido);
+        when(moedaService.convert(quantidade, moedaOrigem, moedaDestino)).thenReturn(valorConvertido);
         when(conversaoMapper.toConversaoResponse(valorConvertido)).thenReturn(expectedResponse);
 
         // Act
-        ResponseEntity<ConversaoResponse> response = moedaController.convert(valor, moedaOrigem, moedaDestino);
+        ResponseEntity<ConversaoResponse> response = moedaController.convert(quantidade, moedaOrigem, moedaDestino);
 
         // Assert
         assertThat(response.getBody()).isEqualTo(expectedResponse);
         assertThat(response.getStatusCodeValue()).isEqualTo(200);
-        verify(moedaService, times(1)).convert(valor, moedaOrigem, moedaDestino);
+        verify(moedaService, times(1)).convert(quantidade, moedaOrigem, moedaDestino);
         verify(conversaoMapper, times(1)).toConversaoResponse(valorConvertido);
     }
 

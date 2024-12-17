@@ -45,7 +45,7 @@ class TransacaoControllerTest {
 
         Transacao transacao = Transacao.builder()
                 .nomeItem("peles")
-                .valor(BigDecimal.TEN)
+                .quantidade(BigDecimal.TEN)
                 .moedaOrigem("ouro real")
                 .moedaDestino("tibar")
                 .valorConvertido(new BigDecimal("25.00"))
@@ -53,7 +53,7 @@ class TransacaoControllerTest {
 
         TransacaoResponse response = TransacaoResponse.builder()
                 .nomeItem("peles")
-                .valor(BigDecimal.TEN)
+//                .quantidade(BigDecimal.TEN)
                 .moedaOrigem("ouro real")
                 .moedaDestino("tibar")
                 .valorConvertido(new BigDecimal("25.00"))
@@ -79,7 +79,7 @@ class TransacaoControllerTest {
 
         Transacao transacao = Transacao.builder()
                 .nomeItem("peles")
-                .valor(BigDecimal.TEN)
+                .quantidade(BigDecimal.TEN)
                 .moedaOrigem("ouro real")
                 .moedaDestino("tibar")
                 .valorConvertido(new BigDecimal("25.00"))
@@ -87,7 +87,7 @@ class TransacaoControllerTest {
 
         TransacaoResponse response = TransacaoResponse.builder()
                 .nomeItem("peles")
-                .valor(BigDecimal.TEN)
+                .quantidade(BigDecimal.TEN)
                 .moedaOrigem("ouro real")
                 .moedaDestino("tibar")
                 .valorConvertido(new BigDecimal("25.00"))

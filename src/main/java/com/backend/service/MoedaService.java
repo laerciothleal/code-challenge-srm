@@ -16,7 +16,7 @@ public class MoedaService {
 
     private final MoedaRepository moedaRepository;
 
-    public BigDecimal convert(BigDecimal valor, String moedaOrigem, String moedaDestino) {
+    public BigDecimal convert(BigDecimal quantidade, String moedaOrigem, String moedaDestino) {
 
         Moeda de = moedaRepository.findByNomeMoedaIgnoreCase(moedaOrigem.trim())
                 .orElseThrow(() -> new MoedaNotFoundException(moedaOrigem));
@@ -24,7 +24,7 @@ public class MoedaService {
         Moeda para = moedaRepository.findByNomeMoedaIgnoreCase(moedaDestino.trim())
                 .orElseThrow(() -> new MoedaNotFoundException(moedaDestino));
 
-        return valor.multiply(para.getTaxaCambio().divide(de.getTaxaCambio(), MathContext.DECIMAL128));
+        return quantidade.multiply(para.getTaxaCambio().divide(de.getTaxaCambio(), MathContext.DECIMAL128));
     }
     public Moeda save(Moeda moeda) {
         return moedaRepository.save(moeda);
