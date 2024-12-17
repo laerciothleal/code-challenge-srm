@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import com.backend.exception.ItemComercializadoNotFoundException;
+import com.backend.model.ItemComercializado;
 import com.backend.model.Transacao;
 import com.backend.repository.ItemComercializadoRepository;
 import com.backend.repository.TransacaoRepository;
@@ -26,22 +27,27 @@ public class TransacaoService {
     @Transactional
     public Transacao processTransaction(String nomeItem, BigDecimal valor, String moedaOrigem, String moedaDestino) {
 
-        // Verificar se o item existe no banco
-        if (!itemComercializadoRepository.existsByNomeItemIgnoreCase(nomeItem)) {
-            throw new ItemComercializadoNotFoundException(nomeItem);
-        }
+        // Buscar o item pelo nome informado
+        ItemComercializado item = itemComercializadoRepository.findByNomeItemIgnoreCase(nomeItem.trim())
+                .orElseThrow(() -> new ItemComercializadoNotFoundException(nomeItem));
 
-        BigDecimal valorConvertido = moedaService.convert(valor, moedaOrigem, moedaDestino);
+        // Multiplicar o preço base pelo valor fornecido
+        BigDecimal valorTotalBase = item.getPrecoBase().multiply(valor);
 
+        // Realizar a conversão com base no valor total
+        BigDecimal valorConvertido = moedaService.convert(valorTotalBase, moedaOrigem, moedaDestino);
+
+        // Construir o objeto de transação
         Transacao transacao = Transacao.builder()
                 .dataTransacao(LocalDateTime.now())
                 .nomeItem(nomeItem.toLowerCase())
                 .moedaOrigem(moedaOrigem.toLowerCase())
                 .moedaDestino(moedaDestino.toLowerCase())
-                .valor(valor)
-                .valorConvertido(valorConvertido)
+                .valor(valorTotalBase) // Valor total com base no precoBase
+                .valorConvertido(valorConvertido) // Valor convertido final
                 .build();
 
+        // Salvar e retornar a transação
         return transacaoRepository.save(transacao);
     }
 

@@ -18,10 +18,10 @@ public class MoedaService {
 
     public BigDecimal convert(BigDecimal valor, String moedaOrigem, String moedaDestino) {
 
-        Moeda de = moedaRepository.findByNomeMoedaIgnoreCase(moedaOrigem)
+        Moeda de = moedaRepository.findByNomeMoedaIgnoreCase(moedaOrigem.trim())
                 .orElseThrow(() -> new MoedaNotFoundException(moedaOrigem));
 
-        Moeda para = moedaRepository.findByNomeMoedaIgnoreCase(moedaDestino)
+        Moeda para = moedaRepository.findByNomeMoedaIgnoreCase(moedaDestino.trim())
                 .orElseThrow(() -> new MoedaNotFoundException(moedaDestino));
 
         return valor.multiply(para.getTaxaCambio().divide(de.getTaxaCambio(), MathContext.DECIMAL128));
