@@ -93,7 +93,7 @@ O sistema oferece:
        taxa_cambio decimal(10, 2) not null
    );
    
-   -- inserção das moeda iniciais
+   -- inserção das moedas iniciais
    insert into tb_moeda (nome_moeda, taxa_cambio) values
    ('ouro real', 1.00),
    ('tibar', 0.40);
