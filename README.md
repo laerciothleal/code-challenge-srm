@@ -43,14 +43,14 @@ O sistema oferece:
    
 2. **Construir e Executar a Aplicação**
    
-   1.1. Compile e execute a aplicação:
+   2.1. Compile e execute a aplicação:
    
    ```bash
    mvn clean compile
    mvn spring-boot:run
    ```
 
-   1.2 Via docker:
+   2.2 Via docker:
 
    Utilize o seguinte arquivo `docker-compose.yml`:
 
