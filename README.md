@@ -42,6 +42,14 @@ O sistema oferece:
    ```
    
 2. **Construir e Executar a Aplicação**
+   1.1. Compile e execute a aplicação:
+   
+   ```bash
+   mvn clean compile
+   mvn spring-boot:run
+   ```
+
+   1.2 Via docker:
 
    Utilize o seguinte arquivo `docker-compose.yml`:
 
@@ -57,19 +65,18 @@ O sistema oferece:
        stdin_open: true
        tty: true
    ```
-
    - **Comandos para subir o ambiente**:
      ```bash
      docker-compose up --build
      ```
-3. **Executar teste**
+4. **Executar teste**
 `mvn clean test`
 
-4. **Acessar a Documentação da API**
+5. **Acessar a Documentação da API**
 
    - Swagger: `http://localhost:8080/swagger-ui.html`
 
-5. **Acessar o Banco de Dados**
+6. **Acessar o Banco de Dados**
 
    h2 console `http://localhost:8080/h2/login.jsp`
 
