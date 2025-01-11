@@ -42,6 +42,7 @@ O sistema oferece:
    ```
    
 2. **Construir e Executar a Aplicação**
+   
    1.1. Compile e execute a aplicação:
    
    ```bash
