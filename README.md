@@ -27,11 +27,6 @@ O sistema oferece:
 
 ## Como Executar o Projeto
 
-### Pré-requisitos
-
-- **Docker** instalado.
-- **Maven** instalado.
-
 ### Passos para Execução
 
 1. **Clonar o Repositório**
